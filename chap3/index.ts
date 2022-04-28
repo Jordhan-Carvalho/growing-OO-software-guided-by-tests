@@ -17,6 +17,14 @@ export class Catalog {
   }
 
   public add(entry: Entry) {
+    
+    // Check the entries property of every Entry object against the receiving entries
+    this.entries.forEach((entryObject: Entry) => {
+      const existingName = entryObject.allEntries.some(entryName => entry.allEntries.includes(entryName));
+      console.log("existing", existingName)
+      if (existingName) throw new Error('Existing entry name');
+      console.log("oi")
+    })
     this.entries = [...this.entries, entry]
   }
 
